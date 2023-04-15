@@ -36,14 +36,10 @@ jobs:
           command: docker build . -t myapp:last
       - run:
           name: Tag Image
-          command: docker tag myapp:last 046573050373.dkr.ecr.eu-central-1.amazonaws.com/myhomegrownweb/myapp
+          command: docker tag myapp:last 046573050373.dkr.ecr.eu-central-1.amazonaws.com/myhomegrownweb/myapp:latest
       - run:
           name: Login to AWS
-          command: docker login --username AWS --password $ECRTOKEN 046573050373.dkr.ecr.eu-central-1.amazonaws.com
-      - run:
-          name: Push image to AWS
-          command: docker push 046573050373.dkr.ecr.eu-central-1.amazonaws.com/myhomegrownweb/myapp
-
+          command: docker login --username AWS --password $ECRTOKEN 046573050373.dkr.ecr.eu-central-1.amazonaws.com & docker push 046573050373.dkr.ecr.eu-central-1.amazonaws.com/myhomegrownweb/myapp:latest
 workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
