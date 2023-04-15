@@ -1,6 +1,6 @@
-import requests, flask
-from flask import render_template 
-app = flask.Flask(__name__)
+import requests, app
+from app import render_template 
+app = app.Flask(__name__)
     
 
 @app.route("/")
